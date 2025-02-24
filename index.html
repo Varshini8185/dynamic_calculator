@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator with functionality</title>
+    <style>
+      body {
+        font-family: "Times New Roman";
+        text-align: center;
+        margin-top: 20px;
+      }
+      .var {
+        width: 250px;
+        height: 280px;
+        margin: 20px auto;
+        padding: 15px;
+        box-sizing: border-box;
+        border: 2px solid #333;
+        box-shadow: 5px 5px 10px rgb(81, 80, 80);
+        background-color: rgb(40, 37, 37);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
+      .var div{
+        padding: 5PX;
+      }
+      input{
+        background-color: transparent;
+        background-color:rgba(230, 240, 238, 0.829);
+        height: 50PX;
+        width: 190px;
+      }
+      button{
+        width: 45px;
+        height: 25px;
+        padding: 4px;
+        border-radius: 25%;
+        border-color: transparent;
+      }
+      button:hover{
+        background-color: rgb(193, 104, 27);
+      }
+      button:active{
+        background-color: brown;
+      }
+     
+    </style>
+  </head>
+  <body>
+    <h1>CALCULATOR</h1>
+      <div class="var">
+        <input type="text" id="display">
+      <div>
+        <button onclick="allclear()">AC</button>
+        <button value="%" onclick="calc(event)">%</button>
+        <button onclick="del()">DEL</button>
+        <button value="/" onclick="calc(event)">/</button>
+      </div>
+      <div>
+        <button value="7" onclick="calc(event)">7</button>
+        <button value="8" onclick="calc(event)">8</button>
+        <button value="9" onclick="calc(event)">9</button>
+        <button value="*" onclick="calc(event)">*</button>
+      </div>
+      <div>
+        <button value="4" onclick="calc(event)">4</button>
+        <button value="5" onclick="calc(event)">5</button>
+        <button value="6" onclick="calc(event)">6</button>
+        <button value="-" onclick="calc(event)">-</button>
+      </div>
+       <div>
+        <button value="1" onclick="calc(event)">1</button>
+        <button value="2" onclick="calc(event)">2</button>
+        <button value="3" onclick="calc(event)">3</button>
+        <button value="+" onclick="calc(event)">+</button>
+      </div>
+        <div>
+        <button value="00" onclick="calc(event)">OO</button>
+        <button value="0" onclick="calc(event)">O</button>
+        <button value="." onclick="calc(event)">.</button>
+        <button value="=" onclick="my_evaluate()">=</button>
+      </div>
+    </div>
+    </div>
+    <script>
+         let display = document.getElementById("display");
+
+        function calc(event) {
+            let value = event.target.value;
+            if ("+-*/%.".includes(value) && "+-*/%.".includes(display.value.slice(-1))) return;  
+            display.value += value;
+        }
+
+        function calculate() {
+            try {
+                display.value = new Function("return " + display.value)();
+            } catch {
+                display.value = "Error";
+            }
+        }
+
+        function del() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function allclear() {
+            display.value = "";
+        }
+    </script>
+  </body>
+</html>
